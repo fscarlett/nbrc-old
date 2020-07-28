@@ -11,9 +11,8 @@ const User = require('../models/User');
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key:
-        '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'
-    }
+      api_key: '',
+    },
   })
 );
 
@@ -36,25 +35,25 @@ exports.getLogin = (req, res, next) => {
     title: 'Log In',
     flashMessage: flashMessage,
     flashClass: flashClass,
-    backlink: '/'
+    backlink: '/',
   });
 };
 
 exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  User.findOne({ email: email }).then(user => {
+  User.findOne({ email: email }).then((user) => {
     if (!user) {
       req.flash('error', 'The email or password you entered is incorrect.');
       return res.redirect('/login');
     }
     bcrypt
       .compare(password, user.password)
-      .then(doMatch => {
+      .then((doMatch) => {
         if (doMatch) {
           req.session.isLoggedIn = true;
           req.session.user = user;
-          return req.session.save(err => {
+          return req.session.save((err) => {
             console.log(err);
             res.redirect('/roster');
           });
@@ -62,7 +61,7 @@ exports.postLogin = (req, res, next) => {
         req.flash('error', 'The email or password you entered is incorrect.');
         res.redirect('/login');
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         res.redirect('/login');
       });
@@ -70,7 +69,7 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postLogout = (req, res, next) => {
-  req.session.destroy(err => {
+  req.session.destroy((err) => {
     console.log(err);
     res.redirect('/');
   });
@@ -84,7 +83,7 @@ exports.getRegister = (req, res, next) => {
     reqMethod: 'GET',
     isAuthenticated: false,
     oldInput: { first: '', last: '', email: '', pw1: '', pw2: '' },
-    validationErrors: []
+    validationErrors: [],
   });
 };
 
@@ -106,31 +105,31 @@ exports.postRegister = (req, res, next) => {
       reqMethod: 'POST',
       errorMessage: errors.array()[0].msg,
       oldInput: { first: first, last: last, email: email, pw1: pw1, pw2: pw2 },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
   User.findOne({ email: email })
-    .then(userDoc => {
+    .then((userDoc) => {
       if (userDoc) {
         return res.redirect('/register');
       }
       return bcrypt
         .hash(pw1, 12)
-        .then(hashedPassword => {
+        .then((hashedPassword) => {
           const user = new User({
             fname: first,
             lname: last,
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
           });
           return user.save();
         })
-        .then(result => {
+        .then((result) => {
           res.redirect('/login');
         });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
@@ -150,7 +149,7 @@ exports.getReset = (req, res, next) => {
     backlink: '/login',
     reqMethod: 'GET',
     isAuthenticated: false,
-    validationErrors: []
+    validationErrors: [],
   });
 };
 
@@ -162,7 +161,7 @@ exports.postReset = (req, res, next) => {
     }
     const token = buffer.toString('hex');
     User.findOne({ email: req.body.email })
-      .then(user => {
+      .then((user) => {
         if (!user) {
           req.flash('error', 'No account with that email was found.');
           return res.redirect('/reset');
@@ -171,7 +170,7 @@ exports.postReset = (req, res, next) => {
         user.resetTokenExpiration = Date.now() + 3600000;
         return user.save();
       })
-      .then(result => {
+      .then((result) => {
         if (process.env.BASE_URL === 'evening-temple-86093') {
           baseUrl = 'evening-temple-86093';
         } else {
@@ -191,10 +190,10 @@ exports.postReset = (req, res, next) => {
           <p><a href="https://${baseUrl}.herokuapp.com/reset/${token}"> Click this link to set a new password</a></p>
           <p>If you did not request a password reset, ignore this email. The link will expire after 1 hour.</p>
 
-          `
+          `,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   });
@@ -203,7 +202,7 @@ exports.postReset = (req, res, next) => {
 exports.getNewPassword = (req, res, next) => {
   const token = req.params.token;
   User.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now() } })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         req.flash('error', 'The password reset link has expired.');
         return res.redirect('/message');
@@ -216,10 +215,10 @@ exports.getNewPassword = (req, res, next) => {
         backlink: '/login',
         reqMethod: 'GET',
         isAuthenticated: false,
-        validationErrors: []
+        validationErrors: [],
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
@@ -244,29 +243,29 @@ exports.postNewPassword = (req, res, next) => {
       isAuthenticated: false,
       reqMethod: 'POST',
       errorMessage: errors.array()[0].msg,
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
   User.findOne({
     resetToken: passwordToken,
     resetTokenExpiration: { $gt: Date.now() },
-    _id: userId
+    _id: userId,
   })
-    .then(user => {
+    .then((user) => {
       resetUser = user;
       return bcrypt.hash(newPassword, 12);
     })
-    .then(hashedPassword => {
+    .then((hashedPassword) => {
       resetUser.password = hashedPassword;
       resetUser.resetToken = undefined;
       resetUser.resetTokenExpiration = undefined;
       return resetUser.save();
     })
-    .then(result => {
+    .then((result) => {
       res.redirect('/login');
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
@@ -282,7 +281,7 @@ exports.getMessage = (req, res, next) => {
     path: '/message',
     title: 'Message',
     flashMessage: flashMessage,
-    backlink: '/'
+    backlink: '/',
   });
 };
 
@@ -306,7 +305,7 @@ exports.getEditPassword = (req, res, next) => {
     flashMessage: flashMessage,
     reqMethod: 'GET',
     isAuthenticated: true,
-    validationErrors: []
+    validationErrors: [],
   });
 };
 
@@ -329,29 +328,29 @@ exports.postEditPassword = (req, res, next) => {
       isAuthenticated: true,
       reqMethod: 'POST',
       errorMessage: errors.array()[0].msg,
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
   User.findById(uid)
-    .then(user => {
+    .then((user) => {
       resetUser = user;
       return bcrypt.hash(newPassword, 12);
     })
-    .then(hashedPassword => {
+    .then((hashedPassword) => {
       resetUser.password = hashedPassword;
       resetUser.resetToken = undefined;
       resetUser.resetTokenExpiration = undefined;
       return resetUser.save();
     })
-    .then(result => {
+    .then((result) => {
       req.flash(
         'success',
         'Your password was successfully reset. You may now log in with your new password.'
       );
       res.redirect('/login');
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
