@@ -1,0 +1,122 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body class="edit-student-page">
+    <%- include('./includes/mini-header.ejs') %>
+    <%- include('./includes/content-header-forms-link.ejs') %>
+
+    <div class="form-container">
+
+    <% if ( message ) { %>
+
+      <div class="edit-confirm-message">
+        <p><%= message %></p>
+      </div>
+
+    <% } %>
+
+     <% if (reqMethod === 'POST') {
+            if (errorMessage) {%> 
+              <div class="error-wrapper">
+
+                <!-- <img src="/images/caution.svg" alt="Caution Sign"> -->
+                <div class="activity__result activity__result-wrong">
+                    <%= errorMessage %>
+                </div>
+              </div>                    
+            <% } %>
+        <% } %>
+        <% %>
+
+    <% %>
+      <form action="/edit-student/<%= student._id %>" method="POST" class="form-left" id="edit-student-form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <p class="edit-instructions">Select an icon</p>
+
+        <div class="icons">
+
+          <input type="radio" name="avatar" id="avatar1" value="/images/heart-yellow.svg" <% if ( student.avatarUrl === '/images/heart-yellow.svg'  ) { %> checked <% } %> ><label for="avatar1" class="radio-label-1"><img src="/images/heart-yellow.svg" alt="Yellow Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar2" value="/images/heart-red.svg" <% if ( student.avatarUrl === '/images/heart-red.svg'  ) { %> checked <% } %> ><label for="avatar2" class="radio-label-2"><img src="/images/heart-red.svg" alt="Red Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar3" value="/images/heart-blue.svg" <% if ( student.avatarUrl === '/images/heart-blue.svg'  ) { %> checked <% } %> ><label  for="avatar3" class="radio-label-3"><img src="/images/heart-blue.svg" alt="Blue Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar4" value="/images/heart-purple.svg" <% if ( student.avatarUrl === '/images/heart-purple.svg'  ) { %> checked <% } %> ><label for="avatar4" class="radio-label-4"><img src="/images/heart-purple.svg" alt="Purple Heart Icon"></label>
+
+        </div>
+
+        <p class="edit-instructions">Click field to edit</p>
+
+          <div>
+              <label class="new-student-label" for="first">First Name:</label>
+              <input  class="<%= validationErrors.find(e => e.param === 'first') ? 'invalid' : '' %>" 
+              type="text" name="first" value="<%= student.fname %>" placeholder="Enter First Name" />
+              <% if (validationErrors.find(e => e.param === 'first')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"></div> <% } %>
+          </div>
+          <div>
+              <label class="new-student-label" for="last">Last Name (optional):</label>
+              <input type="text" name="last" value="<%= student.lname %>"  placeholder="Enter Last Name (optional)" />
+          </div>
+          
+
+          <div>
+              <input type="submit" value="Update Student" class="btn btn-color"/>
+          </div>
+      </form>
+
+      <p><a href="/student/<%= student._id %>" class="link">Cancel</a></p>
+
+      <div>
+        <button class="delete-trigger link">Delete Student</button>
+      </div>
+
+      
+
+      <div class="delete-student-modal leave-activity-modal">
+        <div class="leave-activity-modal-content">
+          <div class="leave-activity-modal-header">
+            <img src="/images/hugging-heart.svg" alt="Hugging Heart logo">
+          </div>
+          <h3>Are you sure you want to delete this student?</h3>
+          <div class="leave-activity-modal-buttons-wrapper">
+
+          <form action="/delete-student" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="studentId" value="<%= student._id %>">
+
+            <button type="submit" class="btn btn-red modal-confirm">Delete</button>
+            <span class="close-modal-link btn btn-blue modal-confirm" tabindex="0" role="button" >Cancel</span>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var modal = document.querySelector(".delete-student-modal");
+      var trigger = document.querySelector(".delete-trigger");
+      var closeButton = document.querySelector(".close-modal-link");
+
+      function toggleModal() {
+        modal.classList.toggle("show-leave-modal");
+      }
+
+      function windowOnClick(event) {
+        if (event.target === modal) {
+          toggleModal();
+        }
+      }
+
+      trigger.addEventListener("click", toggleModal);
+      closeButton.addEventListener("click", toggleModal);
+      window.addEventListener("click", windowOnClick);
+      closeButton.addEventListener("keydown", function(e) { 
+        var code = e.keyCode;
+        // 13 = Return, 32 = Space
+        if ((code === 13) || (code === 32)) {
+          window.location.reload(false); 
+        }
+      });
+
+    </script>
+
+  </body>
+</html>

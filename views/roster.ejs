@@ -1,0 +1,70 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body>
+    <%- include('./includes/mini-header.ejs') %>
+
+    <div class="container-wide">
+
+      <section class="instructions-wrapper">
+        <p class="settings-link">
+        
+          <a href="/settings"><%= teacherName %>: Settings 
+            <img src="/images/settings-icon.svg" alt="Settings Icon">
+          </a>
+        </p>
+
+        <p class="small-copy">Students</p>
+        <h2>Increasing knowledge <br>increases safety!</h2>
+        <p>Add a new student or select an existing student to begin</p>
+
+      </section>
+
+      <section class="display-wrapper">
+
+      <div class="card-50 card-50-add">
+      <a href="/new-student">
+
+        <div class="avatar-circle add-circle"><img src="/images/add-student.svg" alt="Plus Sign Icon"></div>      
+
+        <h4 class="student__name">Add Student</h4>
+      </a>
+
+      </div>
+
+        <% if (students.length > 0) { %>
+          <% for (let student of students) { 
+            let sid = student._id;
+            let sidString = sid['_id'].toString();
+            let sid8 = sidString.slice( - 8);
+             %>
+              <div class="card-50 student-item <%= student.avatarUrl === '/images/heart-yellow.svg' ? 'card-color-3' : '' %> <%= student.avatarUrl === '/images/heart-red.svg' ? 'card-color-4' : '' %> <%= student.avatarUrl === '/images/heart-blue.svg' ? 'card-color-1' : '' %> <%= student.avatarUrl === '/images/heart-purple.svg' ? 'card-color-2' : '' %>">
+                <a href="/student/<%= student._id %>">
+
+                <% if (!student.avatarUrl ) { %>
+                    <div class="avatar-circle"><img src="/images/no-avatar.svg" alt="Generic Student Avatar Icon"></div>
+                <% } else { %>
+                    <div class="avatar-circle <%= student.avatarUrl === '/images/heart-yellow.svg' ? 'circle-color-3' : '' %> <%= student.avatarUrl === '/images/heart-red.svg' ? 'circle-color-4' : '' %> <%= student.avatarUrl === '/images/heart-blue.svg' ? 'circle-color-1' : '' %> <%= student.avatarUrl === '/images/heart-purple.svg' ? 'circle-color-2' : '' %>"><img src="<%= student.avatarUrl %>" alt="Student Avatar Icon"></div>
+                <% } %>
+                  <div class="card__header">
+                      <h4 class="student__name">
+                          <%= student.fname %>
+                          <%= student.lname %>
+                          <p class="student_id_number">
+                            <%= sid8 %>
+                          </p>
+                      </h4>
+                  </div>
+                  
+                </a>
+              </div>
+              <% } %>
+            <% } else { %>
+              <h3 class="default">No students found.</h3>
+            <% } %> 
+                        
+          <% %>
+        </section>
+    </div>
+  </body>
+</html>

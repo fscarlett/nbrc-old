@@ -1,0 +1,37 @@
+<% if ( questId > 1 ) { %>
+<button class="leave-trigger">Leave Activity</button>
+<% } else { %>
+<a href="/student/<%= student._id %>" class="link">Leave Activity</a>
+<% } %>
+
+<div class="leave-activity-modal">
+  <div class="leave-activity-modal-content">
+    <div class="leave-activity-modal-header">
+      <img src="/images/hugging-heart.svg" alt="Hugging Heart logo" />
+    </div>
+    <h3>
+      Are you sure about leaving the activity?<br />Your score will not be
+      saved.
+    </h3>
+    <div class="leave-activity-modal-buttons-wrapper">
+      <form
+        action="/activity-8-leave/<%= student._id %>/<%= questId %>/<%= correct %>"
+        method="POST"
+      >
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <!-- <button type="submit" class="btn btn-color modal-confirm">Leave</button>  -->
+        <a
+          href="/student/<%= student._id %>"
+          class="btn btn-color modal-confirm"
+          >Leave</a
+        >
+        <span
+          class="close-modal-link btn btn-color modal-confirm"
+          tabindex="0"
+          role="button"
+          >Cancel</span
+        >
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs') %>
+
+  </head>
+  <body class="summary-page">
+    <%- include('../includes/mini-header.ejs') %>
+
+      <img src="/images/hugging-heart.svg" alt="Hugging Heart Logo" class="hugging-heart">
+
+
+    <div class="container">
+
+      <p class="summary__student-name"><a href="/student/<%= student._id %>"><%= student.fname %> <%= student.lname %></a></p>
+      <p class="student_id_number"><%= sid8 %></p>
+
+      <h1>Summary</h1>
+
+      <p>Activity 8: Pre/Post Test</p>
+
+      <a href="/student/<%= student._id %>" class="btn btn-color">Back to Student Profile</a>
+
+      <a href="/roster" class="roster-link">All Students</a>
+
+      <section class="sessions-list-wrapper">
+
+      <% if (scores.length <= 0 ) { %>
+        <h3>You have not started this Activity yet.</h3>
+      <% } %>
+
+      <% for (var i = scores.length -1; i >= 0; i--){
+
+        let options = {  
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        };
+
+        let scoreDate = dates[i];
+        let scoreDateString = scoreDate.toLocaleString('en-us', options);
+        %>
+
+        <article class="summary-session-card">
+          <div class="summary-session-title-wrapper">
+            <h3>Session <%= i +1 %></h3>
+            <p><%= scoreDateString %></p>
+          </div>
+
+          <div class="summary-session-score-wrapper">
+            <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+            <h3><%= (scores[i] *100).toFixed(0) %>%</h3>
+            <p>Correct</p>          
+          </div>
+        </article>
+
+        <%
+      }
+      
+      %>
+      
+      </section>
+
+    </div>
+
+  </body>
+</html>

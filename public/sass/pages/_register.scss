@@ -1,0 +1,57 @@
+.error-wrapper {
+  margin: 0 auto; // 20px auto
+  width: 100%;
+  img {
+    float: left;
+    padding: 5px;
+    width: 50px;
+  }
+
+  .activity__result {
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
+    float: right;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    @media (max-width: 767px) {
+      // width: 80%;
+    }
+    .answer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .message {
+      text-align: left;
+      margin-top: 15px;
+    }
+    &-correct {
+      background-color: $correct-answer-bg;
+    }
+    &-wrong {
+      background-color: #eb3223;
+      color: #fff;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1.8rem;
+    }
+    p {
+      display: inline-block;
+      margin-left: 15px;
+    }
+    img {
+      width: 30px;
+      // padding: 5px;
+    }
+  }
+}
+
+body.register-page #register-form input.invalid,
+body.login-page #login-form input.invalid,
+body.edit-password-page #login-form input.invalid,
+body.settings-page #settings-form input.invalid,
+#new-student-form input.invalid,
+#edit-student-form input.invalid {
+  border-bottom: #eb3223 1px solid !important;
+}

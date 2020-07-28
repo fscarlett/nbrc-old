@@ -1,0 +1,66 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // this defines what 1rem is (based on 16px)
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-family: 'Source Serif Pro', serif;
+  padding-bottom: 20px;
+  @media (max-width: 600px) {
+    background-color: $mobile-grey-background;
+  }
+}
+
+a {
+  text-decoration: none;
+  // color: inherit;
+  &:visited {
+    // color: inherit;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+*:focus {
+  outline: 3px solid #8abffd;
+}
+
+input[type='submit'] {
+  -webkit-appearance: none;
+}
+
+// this is for 'no items found' etc text
+.default {
+  margin: 20px auto;
+}
+
+.form-left {
+  text-align: left;
+  padding: 10px;
+  @media (min-width: 900px) {
+    .icons {
+      justify-content: flex-start;
+    }
+  }
+  @media (max-width: 550px) {
+    .icons {
+      // flex-wrap: wrap;
+
+      // flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Purple Heart</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 52 0 52 52 0 52"/>
+    </defs>
+    <g id="Purple-Heart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"/>
+            </mask>
+            <g id="Clip-2"/>
+            <path d="M4.09834489,6.42873001 C7.83177178,2.99763416 14.284528,2.35685225 18.7255286,4.07085819 C22.0784548,5.36612857 26.1478593,8.70539044 27.8424741,12.0528762 C28.8380775,7.10549165 32.9598821,1.58928461 38.0690705,0.333077941 C43.615612,-1.02935461 51.9845707,1.53103171 51.9999826,12.8132479 C52.022929,29.5780901 29.4055748,52.0277301 29.4055748,51.9999743 C29.4244115,51.1320061 29.4151644,51.2036229 29.3953003,50.8184684 C28.1205718,40.2256924 16.7723377,34.3555133 9.15787296,28.5106914 C5.85015468,25.9708649 2.1841973,23.0099042 0.641988206,18.994566 C-1.03618735,14.6228572 0.735829044,9.51818974 4.09834489,6.42873001" id="Fill-1" fill="#7060D7" mask="url(#mask-2)"/>
+        </g>
+    </g>
+</svg>

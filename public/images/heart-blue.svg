@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Blue Heart</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 52 0 52 52 0 52"/>
+    </defs>
+    <g id="Blue-Heart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"/>
+            </mask>
+            <g id="Clip-2"/>
+            <path d="M4.09834489,7.42873001 C7.83177178,3.99763416 14.284528,3.35685225 18.7255286,5.07085819 C22.0784548,6.36612857 26.1478593,9.70539044 27.8424741,13.0528762 C28.8380775,8.10549165 32.9598821,2.58928461 38.0690705,1.33307794 C43.615612,-0.0293546085 51.9845707,2.53103171 51.9999826,13.8132479 C52.022929,30.5780901 29.4055748,53.0277301 29.4055748,52.9999743 C29.4244115,52.1320061 29.4151644,52.2036229 29.3953003,51.8184684 C28.1205718,41.2256924 16.7723377,35.3555133 9.15787296,29.5106914 C5.85015468,26.9708649 2.1841973,24.0099042 0.641988206,19.994566 C-1.03618735,15.6228572 0.735829044,10.5181897 4.09834489,7.42873001" id="Fill-1" fill="#78D3D1" mask="url(#mask-2)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+  padding: 10px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  text-align: center;
+  padding: 10px;
+  max-width: 750px;
+  margin: 0 auto;
+  @media (min-width: 1000px) {
+    max-width: 1320px;
+  }
+}
+
+.activity-container {
+  @media (min-width: 1320px) {
+    max-width: 1320px;
+    padding: 50px 0;
+  }
+}

@@ -1,0 +1,73 @@
+<%- include('../includes/head.ejs') %>
+
+  </head>
+  <body class="register-page">
+    <%- include('../includes/mini-header.ejs') %>
+    <%- include('../includes/content-header-forms.ejs') %>
+
+
+    <div class="form-container">
+
+        <% if (reqMethod === 'POST') {
+            if (errorMessage) {%> 
+                <div class="error-wrapper">
+                    <!-- <img src="/images/caution.svg" alt="Caution Sign"> -->
+                    <div class="activity__result activity__result-wrong">
+                        <%= errorMessage %>
+                    </div>
+                </div>
+
+            <% } %>
+        <% } %>
+        <% %>
+
+        <p class="register-text">Click field to edit. All fields are required.</p>
+
+
+        <form action="/register" method="POST" id="register-form" novalidate>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <div>
+                <label for="first">First Name:</label>
+                <input class="<%= validationErrors.find(e => e.param === 'first') ? 'invalid' : '' %>"
+                type="text" name="first"  id="first" placeholder="Enter First Name"  value="<%= oldInput.first %>"/>
+                <% if (validationErrors.find(e => e.param === 'first')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"></div><% } %>
+            </div>
+            <div>
+                <label for="last">Last Name:</label>
+                <input class="<%= validationErrors.find(e => e.param === 'last') ? 'invalid' : '' %>"
+                 type="text" name="last"  id="last" placeholder="Enter Last Name" value="<%= oldInput.last %>"/>
+                <% if (validationErrors.find(e => e.param === 'last')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"></div><% } %>
+            </div>
+            <div>
+                <label  for="email">Email:</label>
+                <input class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                 type="email" name="email" id="email" placeholder="Enter Email" value="<%= oldInput.email %>"/>
+                <% if (validationErrors.find(e => e.param === 'email')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"></div> <% } %>
+            </div>
+            <div>
+                <label  for="pw1">Password:</label>
+                <input class="<%= validationErrors.find(e => e.param === 'pw1') ? 'invalid' : '' %>"
+                type="password" name="pw1" id="pw1" placeholder="Enter Password" value="<%= oldInput.pw1 %>"/>
+                <% if (validationErrors.find(e => e.param === 'pw1')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"></div> <% } %>
+            </div>
+            <div>
+                <label for="pw2">Confirm Password:</label>
+                <input class="<%= validationErrors.find(e => e.param === 'pw2') ? 'invalid' : '' %>"
+                type="password" name="pw2" id="pw2" placeholder="Confirm Password" value="<%= oldInput.pw2 %>"/>
+                <% if (validationErrors.find(e => e.param === 'pw2')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"> <% } %>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="btn btn-color"/>
+            </div>
+        </form>
+
+        
+        <p class="legal">By clicking Submit I agree to the <a href="/terms">Terms and Services</a></p>
+
+        <a href="/" class="link cancel-link">Cancel</a>
+
+    </div>
+
+  </body>
+</html>

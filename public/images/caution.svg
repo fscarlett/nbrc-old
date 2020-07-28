@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="21px" viewBox="0 0 24 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Caution</title>
+    <desc>Created with Sketch.</desc>
+    <defs/>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Caution" fill="#FF0000">
+            <g id="Fill-1">
+                <path d="M11.999879,0 L6.00018145,10.5 L1.13686838e-13,21 L11.999879,21 L24,21 L17.9998186,10.5 L11.999879,0 Z M10.6644031,10.244271 L10.6644031,6.53686543 L13.3355969,6.53686543 L13.3355969,10.244271 L13.0134043,14.4015291 L10.9561091,14.4015291 L10.6644031,10.244271 Z M10.7258149,17.6127673 L13.3051103,17.6127673 L13.3051103,15.1618465 L10.7258149,15.1618465 L10.7258149,17.6127673 Z"/>
+            </g>
+        </g>
+    </g>
+</svg>

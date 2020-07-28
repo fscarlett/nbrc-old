@@ -1,0 +1,106 @@
+/* JUST FOR REFERENCE - THIS FILE IS NOT CALLED */
+body {
+  font-family: 'Source Serif Pro', serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button,
+input[type='submit'] {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+  color: #111;
+  text-decoration: none;
+}
+
+header {
+  background: #f8cf51;
+  padding: 10px 20px;
+  min-height: 50px;
+}
+
+.header-top-row .header-back-link {
+  position: absolute;
+}
+
+.header-top-row img {
+  display: block;
+  /* position: relative; */
+  margin: 0 auto;
+}
+
+.header-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title-row img {
+  height: 90px;
+}
+
+.front-tree-logo {
+  height: 120px;
+}
+
+.container {
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-left: 1rem;
+  font-weight: 400;
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+  padding: 1rem;
+  font-size: 1.3rem;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+.btn-color {
+  background: #e76840;
+  color: #fff;
+}
+
+.btn-white {
+  background: #fff;
+  color: #e76840;
+  border: 2px solid #e76840;
+}
+
+.btn-mb {
+  margin-bottom: 100px;
+}
+
+.link {
+  color: #e76840;
+  font-size: 1.3rem;
+}
+
+.heading-big {
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin: 50px auto 100px;
+}
+
+.legal {
+  font-size: 0.9rem;
+  color: #999;
+  font-family: 'Source Sans Pro', sans-serif;
+}

@@ -1,0 +1,41 @@
+<%- include('../includes/head.ejs') %>
+
+  </head>
+  <body class="login-page">
+    <%- include('../includes/mini-header.ejs') %>
+    <%- include('../includes/content-header-forms.ejs') %>
+
+    <div class="form-container">
+
+        <% if (flashMessage) {%> 
+                <div class="error-wrapper flashwrapper">
+                    <div class="activity__result activity__result-wrong <%= flashClass %>">
+                        <%= flashMessage %>
+                    </div>
+                </div>
+            <% }
+            
+        %>
+
+
+        <form action="/login" method="POST" id="login-form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Enter your Email"/>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter your Password"/>
+            </div>
+
+            <div>
+                <input type="submit" value="Log In" class="btn btn-color"/>
+            </div>
+        </form>
+
+        <p><a href="/reset" class="link">Forgot Password? Reset Here</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body>
+    <%- include('./includes/mini-header.ejs') %>
+
+    <div class="container-wide">
+
+    <div class="student-top-link-container">
+      <p class="new-back-link">
+        <a href="/roster" class="student-roster-link"><img src="/images/back-arrow.svg" alt="Back arrow"> Back to All Students</a>
+      </p>
+    </div>
+
+        <section class="student-name-wrapper">
+
+        <% if (!student.avatarUrl) { %>
+
+          <div class="student-avatar-wrapper">
+            <div class="student__avatar-row">
+              <div class="avatar-circle"><img src="/images/no-avatar.svg" alt="Generic Student Avatar Icon"></div>
+              <a href="/edit-student/<%= student._id %>" class="student__edit-wrapper student-edit-mobile">
+                <img src="/images/edit-icon.svg" alt="Edit Icon">
+                <p>edit</p>
+              </a>
+            </div>
+            <div class="student-block-wrapper">
+              <p>Student</p>
+              <h2><%= student.fname %> <%= student.lname %></h2>
+              <p class="student_id_number">
+                <%= sid8 %>
+              </p>
+            </div>
+            <div class="student-edit-desktop-wrapper">
+              <a href="/edit-student/<%= student._id %>"  class="student__edit-wrapper">
+                  <img src="/images/edit-icon.svg" alt="Edit Icon">
+                  <p>edit</p>
+              </a>
+            </div>
+          </div>
+
+        <% } else { %>
+
+          <div class="student-avatar-wrapper">
+            <div class="student__avatar-row">
+              <div class="avatar-circle <%= student.avatarUrl === '/images/heart-yellow.svg' ? 'circle-color-3' : '' %> <%= student.avatarUrl === '/images/heart-red.svg' ? 'circle-color-4' : '' %> <%= student.avatarUrl === '/images/heart-blue.svg' ? 'circle-color-1' : '' %> <%= student.avatarUrl === '/images/heart-purple.svg' ? 'circle-color-2' : '' %>"><img src="<%= student.avatarUrl %>" alt="Student Avatar Icon"></div>
+              <a href="/edit-student/<%= student._id %>"  class="student__edit-wrapper student-edit-mobile">
+                <img src="/images/edit-icon.svg" alt="Edit Icon">
+                <p>edit</p>
+            </a>
+            </div>
+
+
+            <div class="student-block-wrapper">
+              <p>Student</p>
+              <h2><%= student.fname %> <%= student.lname %></h2>
+              <p class="student_id_number">
+                <%= sid8 %>
+              </p>
+            </div>
+            <div class="student-edit-desktop-wrapper">
+              <a href="/edit-student/<%= student._id %>"  class="student__edit-wrapper">
+                  <img src="/images/edit-icon.svg" alt="Edit Icon">
+                  <p>edit</p>
+              </a>
+            </div>
+          </div>
+
+        <% } %>
+
+        <% %>
+         
+        </section>
+
+        <section class="student-activities-wrapper">
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 1: Personal Space</h3>
+                <p>Are the people inside or outside each other's personal space?</p>
+              </div>
+              <a href="/activity-summary1/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore1.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds1 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-1/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 2: Public / Private Places</h3>
+                <p>Is this a public place or a private place?</p>
+              </div>
+              <a href="/activity-summary2/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore2.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds2 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-2/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 3: Wanted / Unwanted Touching</h3>
+                <p>Is this wanted or unwanted touching?</p>
+              </div>
+              <a href="/activity-summary3/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore3.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds3 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-3/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 4: Public Touching</h3>
+                <p>Is this too much touching for public?</p>
+              </div>
+              <a href="/activity-summary4/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore4.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds4 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-4/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 5: Legal Touching</h3>
+                <p>Is this sexual touching okay with the law?</p>
+              </div>
+              <a href="/activity-summary5/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore5.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds5 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-5/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 6: Sexual Abuse</h3>
+                <p>Could this be sexual abuse?</p>
+              </div>
+              <a href="/activity-summary6/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore6.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds6 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-6/<%= student._id %>/1/0/1" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 7: Review Activity</h3>
+                <p></p>
+              </div>
+              <a href="/activity-summary7/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore7.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds7 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-7/<%= student._id %>/1/0" class="btn btn-color student__activity-btn">Start Activity</a> 
+              <!-- <a href="#" class="btn btn-color student__activity-btn">Start Activity</a> -->
+
+            </div>
+          </article>
+
+
+          <article class="student__activity-wrapper">
+            <div class="student__activity-title-row">
+              <div class="student__logo-circle"><img src="/images/nbrc-logo.svg" alt="NBRC Logo"></div>
+              <div class="student__activity-info">
+                <h3>AC 8: Pre/Post Test</h3>
+                <p></p>
+              </div>
+              <a href="/activity-summary8/<%= student._id %>" class="student__summary-link"><img src="/images/student-activity-summary-icon.svg" alt="Summary">Summary</a>
+            </div>
+
+            <div class="student__activity-stats-row">
+              <div class="student__activity-score-wrapper">
+                <div class="student__done-all"><img src="/images/ios-done-all.svg" alt="Check Mark"></div>
+                <h3><%= student.runningScore8.toFixed(0) %>%</h3>
+                <p>Average <br>All Rounds</p>
+              </div>
+
+              <div class="student__activity-rounds-wrapper">
+                <div class="student__rounds-icon"><img src="/images/ios-repeat.svg" alt="Check Mark"></div>
+                <h3><%= student.completedRounds8 %></h3>
+                <p>Rounds</p>
+              </div>
+
+              <a href="/activity/activity-8/<%= student._id %>/1/0" class="btn btn-color student__activity-btn">Start Activity</a>
+
+            </div>
+          </article>
+
+        
+        </section>
+
+
+            
+
+
+      
+                        
+          <% %>
+    </div>
+
+    
+  </body>
+</html>

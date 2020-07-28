@@ -1,0 +1,46 @@
+body {
+  color: $text-color-normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button,
+input[type='submit'] {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+  color: $text-color-dark;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+h2 {
+  margin-bottom: 40px;
+}
+
+.heading-big {
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 50px auto 20px;
+}
+
+.legal {
+  font-size: 1.6rem;
+  color: #444;
+  font-family: 'Source Sans Pro', sans-serif;
+  a {
+    color: $brand-color;
+  }
+}
+
+.small-copy {
+  font-size: 1.4rem;
+}

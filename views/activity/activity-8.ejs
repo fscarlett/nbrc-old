@@ -1,0 +1,225 @@
+<%- include('../includes/head.ejs') %>
+
+  </head>
+  <body>
+    <%- include('../includes/mini-header.ejs') %>
+
+    
+
+    <div class="container ac8-page">
+      <p class="activity__student-name"><%= student.fname %> <%= student.lname %></p>
+
+      <div class="activity__label-row">
+        <p>Activity 8: Question <%= questId %>/20</p>
+      </div>
+      <h2 class="activity-question-title"><%= question.title %></h2>
+      <p>Select from the options below</p>
+
+    <% if (question.type === 'radio')  { %>  <!-- RADIO BUTTONS QUESTION =============================================================   -->
+
+      <% if (reqMethod === 'POST') { %> 
+        <%
+        questId++ ;
+        %>
+        <div class="activity-8-wrapper">
+          <div class="activity-8-inputs">
+
+          <% for (var i = 0 ; i <= question.choices.length -1; i++){ %>
+
+            <div class="input-wrapper <% if ( checked === question.choices[i].letter && answer !== true ) { %> incorrect <% } 
+            else if ( checked === question.choices[i].letter && answer === true ) { %> correct <% } %>">
+              <input type="radio" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>" <% if ( checked === question.choices[i].letter ) { %> checked <% } %> <% if ( checked !== question.choices[i].letter ) { %> disabled <% } %> >
+              
+              <label for="<%= i +1 %>" class="<% 
+              if ( checked === question.choices[i].letter && answer !== true ) { %> incorrect <% }
+              else if ( checked === question.choices[i].letter && answer === true ) { %> correct <% }
+               %>" ><%= question.choices[i].text %> <% 
+               if (question.choices[i].letter === checked && question.choices[i].letter !== question.answer && question.questionNumber !== 20) { %> <span class="answer_block answer-wrong"> Incorrect<img id="answer-wrong-icon" src="/images/answer-incorrect-x.svg" alt="incorrect answer icon"> </span>   <% }
+               else if (question.choices[i].letter === checked && question.choices[i].letter === question.answer && question.questionNumber !== 20) { %> <span class="answer_block answer-correct"> Correct<img id="answer-correct-icon" src="/images/answer-correct-check-mark.svg" alt="correct answer icon"> </span>   <% }
+             %> </label>
+            </div>
+
+          <% } %>
+
+
+          <div id="activity__answer-wrapper">
+            <% if ( answer === true && question.questionNumber !== 20) { %>
+              <div class="activity__result activity__result-correct">
+                  <div class="answer">
+                    <img src="/images/answer-correct-check-mark.svg" alt="check mark">
+                    <p>Correct selection. Good work!</p>
+                  </div>
+              </div>
+              <% } else if ( answer === false){ %>
+                <div class="activity__result activity__result-wrong">
+                  <div class="answer">
+                    <img src="/images/answer-incorrect-x.svg" alt="answer incorrect icon">
+                    <p>Incorrect selection.</p>
+                  </div>
+                  
+                </div>
+            <% } else if (question.questionNumber === 20) { %>
+              <div class="activity__result activity__result-correct">
+                <div class="answer">
+                  <img src="/images/answer-correct-check-mark.svg" alt="check mark">
+                  <p>Thank you for answering.</p>
+                </div>
+              </div>
+              <% } %>
+        </div>
+
+        <% if (question.note) { %>
+
+          <div class="ac8-note-wrapper">
+            <h3><%= question.note  %></h3>
+          </div>
+
+        <% } %>
+
+
+            <div class="activity__buttons-row">
+              <form action="/activity/activity-8/<%= student._id %>/<%= questId %>/<%= correct %>" method="GET">
+                <button class="btn btn-color activity-8-answer-btn" type="submit">Next Question</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
+      <% } %>
+
+        <% %>
+
+      <% if (reqMethod === 'GET') { %> 
+
+        <div class="activity-8-wrapper">
+          <form action="/activity/activity-8/<%= student._id %>/<%= questId %>/<%= correct %>" method="POST">
+
+            <div class="activity-8-inputs">
+
+              <% for (var i = 0 ; i <= question.choices.length -1; i++){ %>
+
+                <div class="input-wrapper">
+                  <input type="radio" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>"><label for="<%= i +1 %>"><%= question.choices[i].text %></label>
+                </div>
+
+              <% } %>
+
+            </div>
+            <button class="btn btn-color activity-8-answer-btn" type="submit">Submit</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          </form>
+          
+        </div>
+
+      <% } %>
+
+
+    <% }  %>
+
+
+
+
+
+    <% if (question.type === 'check')  { %>  <!-- CHECK BOXES QUESTION =============================================================   -->
+      <% if (reqMethod === 'POST') { %> 
+        <%
+        questId++ ;
+        %>
+        <div class="activity-8-wrapper">
+          <div class="activity-8-inputs">
+
+            <% for (var i = 0 ; i <= question.choices.length -1; i++){ %>
+
+              <div class="input-wrapper <% if ( checked.includes(question.choices[i].letter)  && !question.answer.includes(question.choices[i].letter)) { %> incorrect <% } else if ( checked.includes(question.choices[i].letter)  && question.answer.includes(question.choices[i].letter)) { %> correct <% }%>">
+                <input type="checkbox" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>" <% if ( checked.includes( question.choices[i].letter ) ) { %> checked <% } %> <% if ( !checked.includes( question.choices[i].letter )) { %> disabled <% } %> >
+                
+                <label for="<%= i +1 %>" class=" <% if ( checked.includes(question.choices[i].letter)  && !question.answer.includes(question.choices[i].letter)) { %> incorrect <% } 
+                
+                else if (checked.includes(question.choices[i].letter)  && question.answer.includes(question.choices[i].letter)) { %> correct <% } %>" "><%= question.choices[i].text %> 
+                
+                <% if ( checked.includes(question.choices[i].letter)  && !question.answer.includes(question.choices[i].letter)) 
+                { %> <span class="answer_block answer-wrong"> Incorrect<img id="answer-wrong-icon" src="/images/answer-incorrect-x.svg" alt="incorrect answer icon"> </span>   <% } 
+                
+                else if (checked.includes(question.choices[i].letter)  && question.answer.includes(question.choices[i].letter)) 
+                
+                { %> <span class="answer_block answer-correct"> Correct<img id="answer-correct-icon" src="/images/answer-correct-check-mark.svg" alt="correct answer icon"> </span>   <% }%>  
+          
+          
+          </label>
+              </div>
+
+            <% } %>
+
+            <div id="activity__answer-wrapper">
+
+              <% if ( answer === true ) { %>
+                <div class="activity__result activity__result-correct">
+                  <div class="answer">
+                    <img src="/images/answer-correct-check-mark.svg" alt="check mark">
+                    <p>Correct. Good work!</p>
+                  </div>
+                </div>
+              <% } 
+
+              if ( answer === false ) { %>
+                
+                  <div class="activity__result activity__result-wrong">
+                    <div class="answer">
+                      <img src="/images/answer-incorrect-x.svg" alt="answer incorrect icon">
+                      <p>Incorrect.</p>
+                    </div>
+                  </div>
+              <% } %>
+            </div>
+
+          <div class="activity__buttons-row">
+            <form action="/activity/activity-8/<%= student._id %>/<%= questId %>/<%= correct %>" method="GET">
+              <button class="btn btn-color activity__answer-btn" type="submit">Next Question</button>
+            </form>
+          </div>
+          </div>
+
+        </div>
+
+
+        
+      <% } %>
+
+        <% %>
+
+      <% if (reqMethod === 'GET') { %> 
+
+        <div class="activity-8-wrapper">
+          <form action="/activity/activity-8/<%= student._id %>/<%= questId %>/<%= correct %>" method="POST">
+
+            <div class="activity-8-inputs">
+
+              <% for (var i = 0 ; i <= question.choices.length -1; i++){ %>
+
+                <div class="input-wrapper">
+                  <input type="checkbox" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>"><label for="<%= i +1 %>"><%= question.choices[i].text %></label>
+                </div>
+
+              <% } %>
+
+            </div>
+            <button class="btn btn-color activity-8-answer-btn" type="submit">Submit</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          </form>
+          
+        </div>
+
+      <% } %>
+    <% } %>
+
+    <%- include('../includes/leave-ac.ejs') %>
+
+    <%- include('../includes/back-message-modal.ejs') %>
+
+    </div>
+
+    <%- include('../includes/leave-ac-js.ejs') %>
+      
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!-- back button message modal -->
+
+<% if (questId == 1 && reqMethod === 'GET') { %>
+
+<div class="back-message-modal show-message-modal">
+  <div class="back-message-modal-content">
+    <div class="back-message-modal-header">
+      <img src="/images/hugging-heart.svg" alt="Hugging Heart logo" />
+    </div>
+    <div class="back-message-modal-content-wrapper">
+      <h3>
+        Please do not use the back button in your browser while you are doing
+        the Activity. If you do so, your activity score will be invalid. To
+        leave the activity, click the “Leave Activity” link.<br /><br />To close
+        this modal, press Continue.
+      </h3>
+      <div class="back-message-modal-buttons-wrapper">
+        <span
+          class="close-message-modal-link btn btn-color modal-confirm"
+          tabindex="0"
+          role="button"
+          >Continue</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var messageModal = document.querySelector('.back-message-modal');
+  var closeButton = document.querySelector('.close-message-modal-link');
+
+  function closeModal() {
+    messageModal.classList.remove('show-message-modal');
+  }
+
+  function windowOnClick(event) {
+    if (event.target === messageModal) {
+      closeModal();
+    }
+  }
+
+  closeButton.addEventListener('click', closeModal);
+  closeButton.addEventListener('keydown', function(e) {
+    var kcode = e.keyCode;
+    // 13 = Return, 32 = Space
+    if (kcode === 13 || kcode === 32) {
+      closeModal();
+    }
+  });
+  window.addEventListener('click', windowOnClick);
+</script>
+
+<% } %>
+
+<!-- end back message modal -->

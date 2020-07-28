@@ -1,0 +1,55 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body class="welcome-page">
+  <header>
+  <div class="container">
+
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
+  <div class="dot dot-3"></div>
+  <div class="dot dot-4"></div>
+  <div class="dot dot-5"></div>
+
+
+    <img class="front-tree-logo" src="/images/nbrc-tree-logo-front.svg" alt="NBRC Tree Logo">
+    <img class="front-text-logo" src="/images/relationships-decoded-100.png" alt="Relationships Decoded Logo">
+
+  </div>
+  
+  </header>
+
+    <div class="content container">
+
+      <h2 class="heading-big">Welcome</h2>
+
+      <% if (!isAuthenticated) { %>
+
+        <a href="/register" class="btn btn-color">Teacher Registration</a>
+
+        <a href="/login" class="btn btn-white btn-mb">Log In</a>
+
+      <% } %> <%# // clean up once logout requirements are confirmed %>
+
+      <% if (isAuthenticated) { %>
+
+        <a href="/roster"  class="btn btn-color">Students</a>
+
+
+        <form action="/logout" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-white btn-mb">Log Out</button>
+        </form>
+
+
+      <% } %>
+
+        <p class="legal">For best performance we recommend using the latest version of Chrome browser and the latest Operating System for your device.</p>
+
+
+    </div>
+
+    <%- include('./includes/footer.ejs') %>
+
+  </body>
+</html>

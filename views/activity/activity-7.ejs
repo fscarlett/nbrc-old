@@ -1,0 +1,218 @@
+<%- include('../includes/head.ejs') %>
+
+  </head>
+  <body class="ac7-page">
+    <%- include('../includes/mini-header.ejs') %>
+
+    <div class="container ac7-container activity-container">
+
+      <div class="activity-7-top-mobile">
+
+        <p class="activity__student-name"><%= student.fname %> <%= student.lname %></p>
+
+        <div class="activity__label-row">
+          <p>Activity 7: Question <%= questId %>/12</p>
+        </div>
+        <h2 class="activity-question-title"><%= question.title %></h2>
+        <p>Select one from the options below</p>
+
+      </div>
+
+      
+
+      <% if (reqMethod === 'POST') { %> 
+        <%
+        questId++ ;
+        %>
+
+
+      <div class="ac7-images-wrapper post">
+        <div class="images-wrapper">
+
+          <% for (var i = 0 ; i <= 3; i++){ %>
+
+            <div class="input-wrapper">
+              <input type="radio" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>" <% if ( checked === question.choices[i].letter  ) { %> checked <% } %> disabled >
+              
+              <label for="<%= i +1 %>"><img src="<%= question.choices[i].imgUrl %>" alt="People"  class="activity__image">
+              
+              <% if (question.choices[i].letter === checked && question.choices[i].letter !== question.answer) { %> <div class="answer_block answer-wrong">
+              <p>Incorrect</p><img id="answer-wrong-icon" src="/images/answer-incorrect-x.svg" alt="Wrong answer icon"> </div>   <% } %> 
+              
+              <% if (question.choices[i].letter === question.answer) { %> <div class="answer_block answer-correct">
+              <p>Correct</p><img id="answer-correct-icon" src="/images/answer-correct-check-mark.svg" alt="Correct answer icon"> </div>   <% } %>  </label>
+            </div>
+
+          <% } %>  
+          <% %>
+
+        </div>
+
+        
+        <div id="activity__answer-wrapper">
+            <% if ( answer === true ) { %>
+              <div class="activity__result activity__result-correct">
+                <div class="answer">
+                  <img src="/images/answer-correct-check-mark.svg" alt="check mark">
+                  <p>Correct selection. Good work!</p>
+                </div>
+              </div>
+              <% } else { %>
+                <div class="activity__result activity__result-wrong">
+                  <div class="answer">
+                    <img src="/images/answer-incorrect-x.svg" alt="answer incorrect icon">
+                    <p>Incorrect.</p>
+                  </div>
+                  <!-- <div class="message">
+                    <p><%- question.message %></p>
+                  </div> -->
+                </div>
+            <% } %>
+            <% %>
+
+        </div>
+
+          <div class="activity__buttons-continue-row">
+            <form action="/activity/activity-7/<%= student._id %>/<%= questId %>/<%= correct %>" method="GET">
+              <button class="btn btn-color activity__full-btn" type="submit">Continue</button>
+            </form>
+          </div>
+
+          <% if ( questId > 1 ) { %>
+          <button class="leave-trigger">Leave Activity</button>
+        <% } else { %>
+          <a href="/student/<%= student._id %>" class="link">Leave Activity</a>
+        <% } %>
+        <% %>
+
+      </div>
+
+      <% } %>
+
+        <% %>
+
+      <% if (reqMethod === 'GET') { %> 
+
+       <div class="ac7-images-wrapper">
+
+          <form action="/activity/activity-7/<%= student._id %>/<%= questId %>/<%= correct %>" method="POST">
+
+            <div class="images-wrapper">
+
+          
+            <% for (var i = 0 ; i <= 3; i++){ %>
+
+                <div class="input-wrapper">
+                  <input type="radio" name="name" value="<%= question.choices[i].letter %>" id="<%= i +1 %>" ><label for="<%= i +1 %>"><img src="<%= question.choices[i].imgUrl %>" alt="People"  class="activity__image">  </label>
+                </div>
+
+              <% } %>  
+
+              <% %>
+            </div>
+
+            <div class="activity__buttons-continue-row">
+              <button class="btn btn-color activity__full-btn" type="submit">Submit</button>
+                <input type="hidden" name="ac1answer" value="<%= question.answer === false %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </div>      
+          
+          </form>
+
+          <% if ( questId > 1 ) { %>
+          <button class="leave-trigger">Leave Activity</button>
+        <% } else { %>
+          <a href="/student/<%= student._id %>" class="link">Leave Activity</a>
+        <% } %>
+        <% %>
+
+        </div>
+
+
+      <% } %>
+
+      <% %>
+
+
+
+
+      <div class="activity-7-top-desktop">
+
+        <p class="activity__student-name"><%= student.fname %> <%= student.lname %></p>
+
+        <div class="activity__label-row">
+          <p>Activity 7: Question <%= questId %>/12</p>
+        </div>
+        <h2 class="activity-question-title"><%= question.title %></h2>
+
+      <% if (reqMethod === 'GET') { %> 
+
+        <p>Select one from the options on right.</p>
+
+      <% } %>
+
+      <% %>
+      </div>
+
+
+
+      
+
+      <div class="activity-7-bottom-desktop">
+
+        
+
+       </div>
+
+      <div class="leave-activity-modal">
+        <div class="leave-activity-modal-content">
+          <div class="leave-activity-modal-header">
+            <img src="/images/hugging-heart.svg" alt="Hugging Heart logo">
+          </div>
+          <h3>Are you sure about leaving the activity?<br>Your score will not be saved.</h3>
+          <div class="leave-activity-modal-buttons-wrapper">
+
+          <form action="/activity-7-leave/<%= student._id %>/<%= questId %>/<%= correct %>" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <!-- <button type="submit" class="btn btn-color modal-confirm">Leave</button> -->
+            <a href="/student/<%= student._id %>" class="btn btn-color modal-confirm">Leave</a>
+            <span class="close-modal-link btn btn-color modal-confirm" tabindex="0" role="button" >Cancel</span>
+
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <%- include('../includes/back-message-modal.ejs') %>
+
+    </div>
+
+    <script type="text/javascript">
+      var modal = document.querySelector(".leave-activity-modal");
+      var trigger = document.querySelector(".leave-trigger");
+      var closeButton = document.querySelector(".close-modal-link");
+
+      function toggleModal() {
+        modal.classList.toggle("show-leave-modal");
+      }
+
+      function windowOnClick(event) {
+        if (event.target === modal) {
+          toggleModal();
+        }
+      }
+
+      trigger.addEventListener("click", toggleModal);
+      closeButton.addEventListener("click", toggleModal);
+      window.addEventListener("click", windowOnClick);
+      closeButton.addEventListener("keydown", function(e) { 
+        var code = e.keyCode;
+        // 13 = Return, 32 = Space
+        if ((code === 13) || (code === 32)) {
+          window.location.reload(false); 
+        }
+      });
+
+    </script>  
+  </body>
+</html>

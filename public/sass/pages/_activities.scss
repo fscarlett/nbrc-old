@@ -1,0 +1,582 @@
+/*  -------------------------- ACTIVITIES ----------------- */
+
+.activity-image-column {
+  display: none;
+  width: 62%;
+  height: 400px;
+  float: right;
+  margin: 15px 0;
+  @media (min-width: 1320px) {
+    display: block;
+  }
+}
+
+.activity__column_top {
+  @media (min-width: 1320px) {
+    width: 37%;
+    padding: 0 20px;
+    float: left;
+  }
+}
+
+.activity__column_bottom {
+  @media (min-width: 1320px) {
+    width: 62%;
+    padding: 0 20px;
+    // float: left;
+    float: right;
+  }
+}
+
+.activity__image-mobile {
+  @media (min-width: 1320px) {
+    display: none;
+  }
+  @media (min-width: 551px) {
+    height: 390px;
+  }
+  @media (max-width: 550px) {
+    height: 350px;
+  }
+  @media (max-width: 450px) {
+    height: 290px;
+  }
+  @media (max-width: 380px) {
+    height: 240px;
+  }
+}
+
+.activity__image {
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    // max-height: 47vh;
+    @media (max-width: 600px) {
+      // max-height: 38vh;
+    }
+  }
+}
+
+.activity__student-name {
+  margin-bottom: 8px;
+}
+
+.activity-question-title {
+  font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.activity-question-subtitle {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.activity__buttons-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0 5px 30px;
+  form {
+    width: 50%;
+    max-width: 250px;
+    padding: 0 2px;
+  }
+}
+
+.activity__buttons-continue-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 0 30px;
+  form {
+    width: 100%;
+    text-align: center;
+    // max-width: 350px;
+    padding: 0;
+    button {
+      margin: 20px auto;
+    }
+  }
+}
+
+.activity__answer-btn {
+  max-width: 250px;
+  margin: 20px 0 5px;
+}
+
+.activity__full-btn {
+  margin: 10px 0 5px;
+  @media (min-width: 500px) {
+    max-width: 350px;
+  }
+}
+
+#activity__answer-wrapper {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 600px;
+  @media (min-width: 1320px) {
+    margin: 10px auto 5px;
+  }
+  @media (max-width: 500px) {
+    // padding: 0 5px;
+  }
+  .activity__result {
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
+    padding: 10px;
+    .answer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .message {
+      text-align: left;
+      margin-top: 15px;
+    }
+    &-correct {
+      background-color: $correct-answer-bg;
+    }
+    &-wrong {
+      background-color: $wrong-answer-bg;
+    }
+    p {
+      display: inline-block;
+      margin-left: 15px;
+    }
+    img {
+      width: 30px;
+      // padding: 5px;
+    }
+  }
+}
+
+.leave-trigger {
+  font-size: 1.6rem;
+  color: $brand-color;
+  padding: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.leave-activity-modal,
+.back-message-modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.leave-activity-modal-content,
+.back-message-modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90%;
+  max-width: 450px;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 6px;
+  h3 {
+    font-weight: normal;
+    margin: 20px;
+    font-size: 2.2rem;
+    @media (max-width: 767px) {
+      margin: 0;
+    }
+  }
+
+  .leave-activity-modal-header,
+  .back-message-modal-header {
+    background-color: $header-bg;
+    height: 140px;
+    margin-bottom: 40px;
+    border-radius: 6px;
+    img {
+      position: relative;
+      top: 39px;
+      width: 115px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .back-message-modal-content {
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.back-message-modal-content {
+  max-width: 800px;
+}
+
+.back-message-modal-content-wrapper {
+  padding: 20px;
+}
+
+.leave-activity-modal-buttons-wrapper form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 10px 25px;
+
+  .modal-confirm {
+    display: inline-block;
+    margin: 30px 5px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+
+.modal-confirm {
+  display: inline-block;
+  margin: 30px 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.close-modal-link,
+.close-message-modal-link {
+  cursor: pointer;
+}
+.show-leave-modal,
+.show-message-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+/* ===================== special for activity 5 =====================     */
+
+body.activity-5-page {
+  .activity__image-mobile {
+    @media (min-width: 1320px) {
+      display: none;
+    }
+    @media (min-width: 551px) {
+      height: 470px;
+    }
+    @media (max-width: 550px) {
+      height: 350px;
+    }
+    @media (max-width: 450px) {
+      height: 290px;
+    }
+    @media (max-width: 380px) {
+      height: 240px;
+    }
+  }
+
+  .ac5-h2 {
+    margin-bottom: 5px;
+  }
+}
+
+/* --------------- Activity 7 Page ---------------------------------------------------------- */
+body.ac7-page {
+  #activity__answer-wrapper {
+    padding: 0 5px;
+  }
+  .ac7-container {
+    padding: 10px 0 80px;
+  }
+  .images-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @media (min-width: 1320px) {
+      margin-top: 0;
+    }
+    .input-wrapper {
+      position: relative;
+      width: 50%;
+      margin-top: -20px;
+      &:nth-child(3),
+      &:nth-child(4) {
+        position: relative;
+        top: -5px;
+      }
+      input {
+        width: 0;
+        position: relative;
+        // top: 20px;
+        // left: 20px
+        opacity: 0;
+        z-index: -10;
+      }
+      input[type='radio'] + label img.activity__image {
+        border: 4px solid #fff;
+        width: 100%;
+      }
+      input[type='radio']:checked + label img.activity__image {
+        border: 4px solid blue;
+      }
+    }
+    .activity__image {
+      img {
+        width: 100%;
+        height: 250px;
+      }
+    }
+  }
+
+  form label {
+    display: block;
+    img {
+      pointer-events: none;
+    }
+  }
+
+  .answer_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 4px;
+    padding: 0 5px;
+    background-color: #fff;
+    position: absolute;
+    width: calc(100% - 8px);
+    bottom: 9px;
+    font-size: 1.5rem;
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+  }
+  .answer-correct {
+    p {
+      color: green;
+    }
+    img#answer-correct-icon {
+      width: 30px;
+    }
+  }
+  .answer-wrong {
+    p {
+      color: red;
+    }
+    img#answer-wrong-icon {
+      width: 30px;
+    }
+  }
+
+  .ac7-images-wrapper {
+    @media (min-width: 1320px) {
+      width: 62%;
+      float: right;
+      padding: 0 70px;
+    }
+  }
+
+  .ac7-images-wrapper.post {
+    // margin-top: -20px;
+  }
+
+  .activity-7-top-mobile {
+    h2 {
+      margin-bottom: 10px;
+    }
+    @media (min-width: 1320px) {
+      display: none;
+    }
+  }
+
+  .activity-7-top-desktop {
+    display: none;
+    @media (min-width: 1320px) {
+      display: block;
+      width: 37%;
+      padding: 0 20px;
+      float: right;
+      margin-top: 120px;
+    }
+  }
+
+  .activity-7-bottom-desktop {
+    text-align: center;
+    @media (min-width: 1320px) {
+      display: block;
+      width: 37%;
+      padding: 0 20px;
+      float: right;
+      margin-top: 80px;
+    }
+  }
+
+  .activity__buttons-continue-row {
+    padding: 0 5px 30px;
+  }
+
+  .ac7-continue-desktop {
+    display: none;
+    @media (min-width: 1320px) {
+      display: block;
+      form {
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .ac7-continue-mobile {
+    padding: 0 5px;
+    @media (min-width: 1320px) {
+      display: none;
+    }
+  }
+}
+
+/* --------------- Activity 8 Page ------------------ */
+
+.ac8-page {
+  h2 {
+    margin-bottom: 15px;
+  }
+}
+
+.activity-8-wrapper {
+  margin-top: 50px;
+  .activity-8-inputs {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    .input-wrapper {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+
+      input:checked {
+        border: 3px solid blue;
+      }
+      label {
+        margin-left: 15px;
+        font-size: 1.8rem;
+        &.incorrect {
+          color: red;
+        }
+        &.correct {
+          color: #2b9257;
+        }
+        span.answer_block {
+          position: absolute;
+          right: 0;
+          bottom: 12px;
+          font-size: 1.4rem;
+          font-family: 'Source Sans Pro', sans-serif;
+          img {
+            position: relative;
+            top: 12px;
+          }
+        }
+      }
+    }
+    .incorrect {
+      border-bottom-color: red;
+    }
+    .correct {
+      border-bottom-color: #2b9257;
+    }
+  }
+  .activity-8-answer-btn {
+    max-width: 350px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+  }
+}
+
+.ac8-note-wrapper {
+  text-align: center;
+  font-size: 2.2rem;
+  padding: 10px;
+  background: $wrong-answer-bg;
+}
+
+/* --------------- Congrats Page ------------------ */
+
+body.congrats-page {
+  color: #fff;
+  background-color: #7060d7;
+  h1 {
+    font-size: 5rem;
+    margin-bottom: 30px;
+  }
+  p:last-child {
+    margin-bottom: 15px;
+  }
+  img {
+    width: 170px;
+    margin: 50px auto 20px;
+  }
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  #confetti {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+  }
+}
+
+/* ------------------ Summary Page ---------------- */
+body.summary-page {
+  header {
+    min-height: 220px;
+  }
+  img.hugging-heart {
+    width: 150px;
+    position: absolute;
+    top: 83px;
+    left: calc(50vw - 75px);
+  }
+
+  .sessions-list-wrapper {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .roster-link {
+    color: $brand-color;
+  }
+
+  .summary__student-name {
+    margin-top: 50px;
+  }
+
+  .summary-session-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #eff1f5;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    h3 {
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+    .summary-session-title-wrapper {
+      p {
+        // margin-left: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="52px" viewBox="0 0 40 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>No Avatar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.00011299435 0.104045217 39.8540113 0.104045217 39.8540113 26 0.00011299435 26"/>
+        <polygon id="path-3" points="0.212954545 0.176945455 24.8672727 0.176945455 24.8672727 23.8448291 0.212954545 23.8448291"/>
+    </defs>
+    <g id="No-Avatar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7">
+            <g id="Group-3" transform="translate(0.000000, 26.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"/>
+                </mask>
+                <g id="Clip-2"/>
+                <path d="M39.8541243,18.3956104 C39.8541243,21.2045148 30.9325424,26.0000452 19.9271186,26.0000452 C8.92169492,26.0000452 0.00011299435,20.5651409 0.00011299435,18.3956104 C0.00011299435,8.29314087 8.92169492,0.104045217 19.9271186,0.104045217 C30.9325424,0.104045217 39.8541243,8.29314087 39.8541243,18.3956104" id="Fill-1" fill="#818181" mask="url(#mask-2)"/>
+            </g>
+            <g id="Group-6" transform="translate(8.000000, 0.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"/>
+                </mask>
+                <g id="Clip-5"/>
+                <path d="M24.8672727,12.0108655 C24.8672727,18.54672 19.3481818,23.8448291 12.54,23.8448291 C5.73227273,23.8448291 0.212954545,18.54672 0.212954545,12.0108655 C0.212954545,5.47501091 5.73227273,0.176901818 12.54,0.176901818 C19.3481818,0.176901818 24.8672727,5.47501091 24.8672727,12.0108655" id="Fill-4" fill="#818181" mask="url(#mask-4)"/>
+            </g>
+        </g>
+    </g>
+</svg>

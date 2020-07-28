@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>md-create</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="App-IOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Student-Page" transform="translate(-258.000000, -110.000000)" fill="#31BDBA" fill-rule="nonzero">
+            <g id="Edit-Link" transform="translate(252.000000, 110.000000)">
+                <g id="md-create" transform="translate(6.000000, 0.000000)">
+                    <path d="M0,9.50000163 L0,12 L2.49999837,12 L9.86646233,4.63347355 L7.3664952,2.13353767 L0,9.50000163 Z M11.8000548,2.69994355 C12.0666484,2.43334998 12.0666484,2.03325649 11.8000548,1.76666291 L10.2333371,0.199945182 C9.96674351,-0.0666483941 9.56665002,-0.0666483941 9.30005645,0.199945182 L8.06668225,1.43335063 L10.5666494,3.9332865 L11.8000548,2.69994355 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

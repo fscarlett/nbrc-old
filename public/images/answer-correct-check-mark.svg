@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Correct Check Mark</title>
+    <desc>Created with Sketch.</desc>
+    <defs/>
+    <g id="Correct-Check-Mark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="16.5" cy="16.5" r="16.5"/>
+            <g id="Check-Mark" transform="translate(5.000000, 4.000000)" fill="#2B9257">
+                <polygon id="Shape" points="8.9999939 16.2 4.7999939 12 3.3999939 13.4 8.9999939 19 20.9999939 7 19.5999939 5.6"/>
+            </g>
+        </g>
+    </g>
+</svg>

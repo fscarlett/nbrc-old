@@ -1,0 +1,56 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body>
+    <%- include('./includes/mini-header.ejs') %>
+    <%- include('./includes/content-header-forms-link.ejs') %>
+
+    <div class="form-container">
+
+        <% if (reqMethod === 'POST') {
+            if (errorMessage) {%> 
+              <div class="error-wrapper">
+
+                <!-- <img src="/images/caution.svg" alt="Caution Sign"> -->
+                <div class="activity__result activity__result-wrong">
+                    <%= errorMessage %>
+                </div>
+              </div>                    
+            <% } %>
+        <% } %>
+        <% %>
+
+      <form action="/new-student" method="post" class="form-left" id="new-student-form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <p class="new-student-instruction">Select an icon</p>
+
+        <div class="icons">
+
+          <input type="radio" name="avatar" id="avatar1" value="/images/heart-yellow.svg" <% if ( oldInput.avatar === '/images/heart-yellow.svg'  ) { %> checked <% } %> ><label for="avatar1" class="radio-label-1"><img src="/images/heart-yellow.svg" alt="Yellow Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar2" value="/images/heart-red.svg" <% if ( oldInput.avatar === '/images/heart-red.svg'  ) { %> checked <% } %> ><label for="avatar2" class="radio-label-2"><img src="/images/heart-red.svg" alt="Red Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar3" value="/images/heart-blue.svg" <% if ( oldInput.avatar === '/images/heart-blue.svg'  ) { %> checked <% } %> ><label for="avatar3" class="radio-label-3"><img src="/images/heart-blue.svg" alt="Blue Heart Icon"></label>
+          <input type="radio" name="avatar" id="avatar4" value="/images/heart-purple.svg" <% if ( oldInput.avatar === '/images/heart-purple.svg'  ) { %> checked <% } %> ><label for="avatar4" class="radio-label-4"><img src="/images/heart-purple.svg" alt="Purple Heart Icon"></label>
+
+        </div>
+
+          <div>
+              <label class="new-student-label" for="first">First Name:</label>
+              <input  class="<%= validationErrors.find(e => e.param === 'first') ? 'invalid' : '' %>"
+              type="text" name="first" placeholder="Enter First Name"/>
+              <% if (validationErrors.find(e => e.param === 'first')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg"  class="form-error-icon" alt="Error icon"> </div><% } %>
+          </div>
+          <div>
+              <label class="new-student-label" for="last">Last Name (optional):</label>
+              <input type="text" name="last" placeholder="Enter Last Name (optional)" value="<%= oldInput.last %>"/>
+          </div>
+          
+
+          <div>
+              <input type="submit" value="Submit" class="btn btn-color new-student-submit"/>
+          </div>
+      </form>
+
+      <p><a href="/roster" class="link">Cancel</a></p>
+    </div>
+  </body>
+</html>

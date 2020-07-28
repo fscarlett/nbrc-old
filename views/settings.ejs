@@ -1,0 +1,86 @@
+<%- include('./includes/head.ejs') %>
+
+  </head>
+  <body class="settings-page">
+    <%- include('./includes/mini-header.ejs') %>
+    <%- include('./includes/content-header-forms.ejs') %>
+
+    <div class="form-container">
+
+    
+       <% if (errorMessage) {%> 
+            <div class="error-wrapper">
+                <!-- <img src="/images/caution.svg" alt="Caution Sign"> -->
+                <div class="activity__result activity__result-wrong">
+                    <%= errorMessage %>
+                </div>
+            </div>
+        <% } %>
+
+        <% if (flashMessage) {%> 
+            <div class="error-wrapper flashwrapper">
+                <div class="activity__result activity__result-wrong">
+                    <%= flashMessage %>
+                </div>
+            </div>
+        <% }
+        
+     %>
+
+
+
+    <% if ( message ) { %>
+
+      <div class="edit-confirm-message">
+        <p><%= message %></p>
+      </div>
+
+      <% } %>
+      <% %>
+
+      <p>Click field to edit</p>
+
+      <form action="/settings" method="post" id="settings-form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+          <div>
+            <img src="/images/settings-contact.svg" alt="Person Icon">
+            <label>First Name:</label>
+            <input class="<%= validationErrors.find(e => e.param === 'first') ? 'invalid' : '' %>"
+            type="text" name="first" placeholder="First Name" value="<%= first %>" />
+            <% if (validationErrors.find(e => e.param === 'first')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg" class="form-error-icon" alt="Error icon"></div> <% } %>
+          </div>
+          <div>
+            <img src="/images/settings-contact.svg" alt="Person Icon">
+            <label>Last Name:</label>
+            <input class="<%= validationErrors.find(e => e.param === 'last') ? 'invalid' : '' %>"
+            type="text" name="last" placeholder="Last Name"/ value="<%= last %>" />
+            <% if (validationErrors.find(e => e.param === 'last')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg" class="form-error-icon" alt="Error icon"></div> <% } %>
+          </div>
+          <div>
+            <img src="/images/settings-email.svg" alt="Email Icon">
+            <label>Email:</label>
+            <input class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+            type="text" name="email" placeholder="Email"/ value="<%= email %>" />
+            <% if (validationErrors.find(e => e.param === 'email')) { %> <div class="form-error"><span>Incorrect</span> <img src="/images/answer-incorrect-x.svg" class="form-error-icon" alt="Error icon"></div> <% } %>
+          </div>
+
+          <div>
+              <input type="submit" value="Save" class="btn btn-color"/>
+          </div>
+      </form>
+
+      <a href="/roster" class="link settings-cancel-link">Cancel</a>
+
+      <a href="/edit-password" class="link settings-cancel-link">Reset Password</a>
+
+      <form action="/logout" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="link settings-logout">Log Out</button>
+      </form>
+
+      <a href="/terms" class="link settings-cancel-link">Terms and Conditions</a>
+
+    </div>
+  </body>
+</html>
