@@ -1,3 +1,4 @@
+===== NOTE SENDGRID DISABLED IN THIS REPO =====
 nbrc-dev
 NBRC App - V1.0
 by Flight LLC
